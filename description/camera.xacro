@@ -1,16 +1,20 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
 
+    <xacro:property name="camera_length" value="0.001"/>
+    <xacro:property name="camera_width" value="0.020"/>
+    <xacro:property name="camera_height" value="0.025"/>
+
     <joint name="camera_joint" type="fixed">
         <parent link="chassis"/>
         <child link="camera_link"/>
-        <origin xyz="0.305 0 0.08" rpy="0 0 0"/>
+        <origin xyz="${chassis_length+camera_length} 0 ${chassis_height/2}" rpy="0 0 0"/>
     </joint>
 
     <link name="camera_link">
         <visual>
             <geometry>
-                <box size="0.010 0.03 0.03"/>
+                <box size="${camera_length} ${camera_width} ${camera_height}"/>
             </geometry>
             <material name="red"/>
         </visual>
